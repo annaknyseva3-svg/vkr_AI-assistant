@@ -1,1 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+*.log
 
+# Data
+*.db
+*.sqlite
+*.sqlite3
+data/raw/*.csv
+data/processed/*.csv
+data/knowledge_base/*.json
+!data/knowledge_base/sample_*.json
+
+# Models
+*.pt
+*.pth
+*.bin
+*.onnx
+*.h5
+*.hdf5
+*.joblib
+*.pkl
+models/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Docker
+*.pid
+*.sock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
