@@ -1,1 +1,40 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИИ-ассистент для КП</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">ИИ-ассистент для подготовки КП</h1>
+        <form id="generate-form">
+            <div class="mb-3">
+                <label for="query" class="form-label">Введите информацию о клиенте:</label>
+                <textarea class="form-control" id="query" rows="4" placeholder="Клиент — ООО 'Ромашка', оптовая торговля..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Сгенерировать КП</button>
+        </form>
+        <div id="result" class="mt-4" style="display:none;">
+            <hr>
+            <h4>Результат:</h4>
+            <div id="proposal-content" class="p-3 border rounded"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('generate-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const query = document.getElementById('query').value;
+            const response = await fetch('/api/generate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({query})
+            });
+            const data = await response.json();
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('proposal-content').innerHTML = data.proposal.replace(/\n/g, '<br>');
+        });
+    </script>
+</body>
+</html>
